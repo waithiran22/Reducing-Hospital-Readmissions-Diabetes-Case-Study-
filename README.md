@@ -76,5 +76,8 @@ Hospitals should:
 
 ### Tech Stack
 -Python: pandas, numpy, scikit-learn, statsmodels
+
 -Visualization: seaborn, matplotlib, SHAP
+
 -Modeling: Logistic Regression, Random Forest, Lasso
+
