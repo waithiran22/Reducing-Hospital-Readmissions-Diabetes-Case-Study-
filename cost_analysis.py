@@ -1,5 +1,5 @@
 # analysis/cost_analysis.py
-# Generates CSV outputs for dashboarding: brand vs generic savings, regional variance, and price acceleration.
+brand vs generic savings, regional variance, and price acceleration.
 import os
 import pandas as pd
 from sqlalchemy import create_engine
