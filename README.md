@@ -131,7 +131,7 @@ pharma-cost-optimization/
 ## How to ReProduce
 1. Clone the Repo:
    ```bash
-   git clone https://github.com/yourusername/pharma-cost-optimization.git
+   git clone https://github.com/waithiran22/Pharmaceutical-Cost-Optimization-Analysis-and-Dashboard.git
    ```
 2. Install dependencies:
 ```bash 
