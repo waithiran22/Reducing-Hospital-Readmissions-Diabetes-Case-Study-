@@ -1,73 +1,77 @@
-# Pharmaceutical Cost Optimization Analysis and Dashboard
+# Pharmaceutical Cost Optimization 
+
+![Pharma Cost Dashboard](docs/images/dashboard.png)
+
+**TL;DR:** Built an analytics pipeline to identify **$10M+ potential pharmaceutical savings** using **SQL, Python, and Power BI**.
+
+[![Python](https://img.shields.io/badge/Python-3.9-blue)](https://www.python.org/)
+[![SQL](https://img.shields.io/badge/SQL-SQLAlchemy-green)](https://www.sqlalchemy.org/)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow)](https://powerbi.microsoft.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
+
+---
 
 ## Overview
 Pharmaceutical costs are a critical challenge in healthcare. With over **$130B in pharmacy spend managed by Vizient**, cost optimization directly impacts provider sustainability and patient access.  
 
-This project analyzes **Medicare Part D data** (publicly available from CMS) to uncover pricing inefficiencies, model generic substitution impact, and forecast potential savings. By applying **data engineering, SQL, Python, and forecasting models**, I built a framework to identify where brand-to-generic substitutions and regional optimization can reduce costs without compromising care.
+This project analyzes **Medicare Part D data** (CMS) to uncover pricing inefficiencies, model generic substitution impact, and forecast potential savings. Using **SQL, Python, and forecasting models**, I built a framework to identify where brand-to-generic substitutions and regional optimization can reduce costs without compromising care.  
 
-Due to the large size of the CMS datasets (10GB+), this repository includes a **sample dataset** for demonstration, while the ETL and analysis pipeline are designed for the full prescriber-level data.
+Due to the size of CMS datasets (10GB+), this repo includes a **sample dataset** for demonstration, while the ETL + analysis pipeline is designed for full prescriber-level data.
 
 ---
 
 ## Why This Project Matters
-Pharmaceutical costs are one of the largest drivers of U.S. healthcare spending.  
-- - Medicare Part D spending exceeds **$130B annually**  
-- A 2–3% savings translates to **billions of dollars**  
-- Reducing costs without lowering quality of care improves **access and sustainability**    
+- **Medicare Part D** spending exceeds **$130B annually**  
+- Even a **2–3% savings** = billions of dollars  
+- Reducing costs without lowering quality improves **patient access & system sustainability**  
 
-For me personally, this project is about more than just numbers.  
-As someone passionate about **data-driven impact**, I wanted to apply my analytics skills to a sector that touches millions of lives. Healthcare is an area where **the right analysis can literally improve access to life-saving treatments** and that motivates me to do my best work.
+For me personally, this project is about **data with real-world impact**. Healthcare analytics can literally improve access to life-saving treatments — and that’s what drives my work.  
 
 ---
 
-## Project Scope & Structure
-This project was built in four phases to simulate a real-world healthcare analytics workflow:  
+## Project Scope
+This project was built in four phases to simulate a **real-world healthcare analytics workflow**:
 
-###  Phase 1: Data Foundation 
-- Imported **CMS Medicare Part D Prescriber PUF** (CSV) into **SQL + Python (Pandas)**  
-- Standardized drug names, handled missing values, and normalized formats  
-- Designed a relational schema:
-  - **Drugs** → drug_id, brand_name, generic_name, category, unit_cost  
-  - **Prescriptions** → provider_id, drug_id, claims_count, total_cost, year  
-  - **Providers** → provider_id, specialty, state, region  
-  - **Geography** → state, region, population  
+### Phase 1: Data Foundation  
+- Imported **CMS Medicare Part D Prescriber PUF** into SQL + Python (Pandas)  
+- Standardized drug names, cleaned missing values, normalized formats  
+- Designed relational schema: Drugs, Prescriptions, Providers, Geography  
 
-###  Phase 2: Cost Analysis
-- **Generic vs Brand analysis** across therapeutic categories  
-- **Regional price variance** analysis by state/provider  
-- **Shortage impact modeling** using forecasting techniques  
-- Outputs: cost optimization opportunities, prescriber trends, formulary efficiency  
+### Phase 2: Cost Analysis  
+- **Generic vs Brand** analysis across categories  
+- **Regional variance** analysis (state/provider)  
+- **Shortage impact modeling** via forecasting  
+- Outputs: savings opportunities, prescriber trends, formulary efficiency  
 
-###  Phase 3: Dashboard Creation
-- Built an **interactive Power BI dashboard** with key  KPIs  
-- Features:  
-  - Filters by drug category, region, and year  
+### Phase 3: Dashboard Creation  
+- Interactive **Power BI dashboard** with:  
+  - Filters by drug, region, year  
   - Brand vs Generic cost savings calculator  
-  - Regional heatmaps of cost variance  
+  - Regional heatmaps of variance  
 
-###  Phase 4: Business Impact
-- Projected **$10M+ savings opportunities** in sample scenarios  
-- Developed **executive-ready summary visuals** for healthcare decision makers  
+### Phase 4: Business Impact  
+- Projected **$10M+ savings** in scenarios  
+- Built **executive-ready visuals** for healthcare decision makers  
 
 ---
 
-##  Programs & Tools Used
-- **SQL (SQLite, SQLAlchemy)** → schema design, cost aggregation, variance queries  
-- **Python (Pandas, NumPy, Matplotlib)** → ETL pipeline, cleaning, forecasting  
-- **Power BI** → interactive dashboards, KPI measures, executive-ready visuals  
-- **Excel** → quick data validation and cross-checking  
+## Programs & Tools Used
+- **SQL (SQLite, SQLAlchemy)** → schema design, cost aggregation  
+- **Python (Pandas, NumPy, Matplotlib)** → ETL, cleaning, forecasting  
+- **Power BI** → interactive dashboards, KPIs, executive visuals  
+- **Excel** → validation & cross-checking  
 - **GitHub** → version control, reproducibility, collaboration  
 
 ---
 
 ## Key Snippets
 
-**ETL Pipeline (Python + Pandas)**
+**ETL Pipeline (Python + Pandas):**
 ```python
-# Load raw CMS file in chunks
 chunksize = 500000
 for chunk in pd.read_csv("Medicare_PartD_Prescriber.csv", chunksize=chunksize):
     chunk.to_sql("prescriptions", con=engine, if_exists="append", index=False)
+
 ```
 ## SQL Cost Savings Query
 ```sql
